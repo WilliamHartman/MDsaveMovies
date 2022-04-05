@@ -18,8 +18,6 @@ function App(props) {
   }, [searchTerm])
 
   useEffect(() => {
-    console.log('Movie was selected')
-    console.log(selectedMovie)
     if(selectedMovie && window.location.pathname.includes('movieID=')){
       axios.get(`${process.env.REACT_APP_DEV_BACKEND}movie/${selectedMovie.id}`).then((result) => {
         setMovieDetails(result.data)

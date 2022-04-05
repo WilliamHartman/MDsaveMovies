@@ -12,14 +12,14 @@ function App(props) {
 
   useEffect(() => {
     let newSearchTerm = searchTerm.split(' ').join('%20')
-    axios.get(`${process.env.REACT_APP_DEV_BACKEND}autocomplete/${newSearchTerm}`).then((result) => {
+    axios.get(`${process.env.REACT_APP_DEV_BACKEND}/api/autocomplete/${newSearchTerm}`).then((result) => {
       setMovieList(result.data)
     })
   }, [searchTerm])
 
   useEffect(() => {
     if(selectedMovie && window.location.pathname.includes('movieID=')){
-      axios.get(`${process.env.REACT_APP_DEV_BACKEND}movie/${selectedMovie.id}`).then((result) => {
+      axios.get(`${process.env.REACT_APP_DEV_BACKEND}/api/movie/${selectedMovie.id}`).then((result) => {
         setMovieDetails(result.data)
       })
     } else if(selectedMovie){
